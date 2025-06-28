@@ -34,3 +34,4 @@ Este proyecto es una aplicación frontend desarrollada como parte de la evaluaci
 - Lautaro Oyarzún
 
 
+
