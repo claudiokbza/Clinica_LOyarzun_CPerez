@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Paciente - Clínica Punto de Guardado</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <a href="index.html" class="logo-container">
+                <img src="logo.png" alt="Logo Clínica Punto de Guardado" class="logo-image">
+            </a>
+            <nav class="main-nav">
+                <ul>
+                    <!-- Nuevo: Enlace para mantener consistencia en la navegación -->
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="medicos.html">Nuestros Médicos</a></li>
+                    <li><a href="pacientes.html">Pacientes Registrados</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="form-card">
+            <h2>Formulario de Ingreso de Pacientes</h2>
+            <form id="registration-form" novalidate>
+                <!-- El resto del formulario sigue igual... -->
+                <fieldset>
+                    <legend>Datos Personales</legend>
+                    <div class="form-grid">
+                        <div class="form-group"><label for="nombre">Nombre</label><input type="text" id="nombre" required><span class="error-message"></span></div>
+                        <div class="form-group"><label for="apellido">Apellido</label><input type="text" id="apellido" required><span class="error-message"></span></div>
+                        <div class="form-group"><label for="rut">RUT</label><input type="text" id="rut" required><span class="error-message"></span></div>
+                        <div class="form-group"><label for="edad">Edad</label><input type="number" id="edad" required><span class="error-message"></span></div>
+                        <div class="form-group"><label for="sexo">Sexo</label><select id="sexo" required><option value="" disabled selected>Seleccionar...</option><option value="Masculino">Masculino</option><option value="Femenino">Femenino</option><option value="Otro">Otro</option></select><span class="error-message"></span></div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Signos Vitales</legend>
+                    <div class="form-grid">
+                        <div class="form-group"><label for="temperatura">Temperatura (°C)</label><input type="number" step="0.1" id="temperatura" required><span class="error-message"></span></div>
+                        <div class="form-group"><label for="presionSistolica">P. Sistólica (mmHg)</label><input type="number" id="presionSistolica" required><span class="error-message"></span></div>
+                        <div class="form-group"><label for="presionDiastolica">P. Diastólica (mmHg)</label><input type="number" id="presionDiastolica" required><span class="error-message"></span></div>
+                        <div class="form-group"><label for="pulsaciones">Pulsaciones (x min)</label><input type="number" id="pulsaciones" required><span class="error-message"></span></div>
+                        <div class="form-group"><label for="oxigeno">Oxígeno en sangre (%)</label><input type="number" id="oxigeno" required><span class="error-message"></span></div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Síntomas Reportados</legend>
+                    <div class="symptom-grid">
+                        <div class="checkbox-group"><input type="checkbox" id="dolorCabeza" value="Dolor de cabeza"><label for="dolorCabeza">Dolor de cabeza</label></div>
+                        <div class="checkbox-group"><input type="checkbox" id="malestarEstomacal" value="Malestar estomacal"><label for="malestarEstomacal">Malestar estomacal</label></div>
+                        <div class="checkbox-group"><input type="checkbox" id="dolorMuscular" value="Dolor muscular"><label for="dolorMuscular">Dolor muscular</label></div>
+                        <div class="checkbox-group"><input type="checkbox" id="tos" value="Tos"><label for="tos">Tos</label></div>
+                        <div class="checkbox-group"><input type="checkbox" id="dolorGarganta" value="Dolor de garganta"><label for="dolorGarganta">Dolor de garganta</label></div>
+                        <div class="checkbox-group"><input type="checkbox" id="nauseas" value="Náuseas"><label for="nauseas">Náuseas</label></div>
+                        <div class="checkbox-group"><input type="checkbox" id="vomitos" value="Vómitos"><label for="vomitos">Vómitos</label></div>
+                        <div class="checkbox-group"><input type="checkbox" id="congestionNasal" value="Congestión nasal"><label for="congestionNasal">Congestión nasal</label></div>
+                        <div class="checkbox-group"><input type="checkbox" id="fatiga" value="Fatiga"><label for="fatiga">Fatiga</label></div>
+                        <div class="checkbox-group"><input type="checkbox" id="mareos" value="Mareos"><label for="mareos">Mareos</label></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="otrosSintomas">Otros síntomas (separados por coma)</label>
+                        <textarea id="otrosSintomas" rows="2"></textarea>
+                    </div>
+                </fieldset>
+                <button type="submit" class="btn btn-primary submit-btn">Registrar y Clasificar Paciente</button>
+            </form>
+            <div id="result-container" class="result-container" style="display: none;">
+                <h3>Clasificación del Paciente</h3>
+                <div id="classification-badge"></div>
+                <p>El paciente ha sido registrado y clasificado correctamente.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>&copy; 2025 Clínica Punto de Guardado</p>
+    </footer>
+    
+    <script src="script.js"></script>
+</body>
+</html>
