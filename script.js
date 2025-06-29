@@ -129,6 +129,18 @@ document.addEventListener('DOMContentLoaded', () => {
     // Mostrar pacientes en pacientes.html
     if (patientListContainer) {
         const pacientes = getPacientes();
+            const resumen = { Verde: 0, Amarillo: 0, Rojo: 0 };
+    pacientes.forEach(p => resumen[p.clasificacion]++);
+
+    const resumenContainer = document.getElementById('resumen-pacientes');
+    resumenContainer.innerHTML = `
+        <div class="resumen-box">
+            <p><span class="badge-verde">🟢 Verde:</span> ${resumen.Verde}</p>
+            <p><span class="badge-amarillo">🟡 Amarillo:</span> ${resumen.Amarillo}</p>
+            <p><span class="badge-rojo">🔴 Rojo:</span> ${resumen.Rojo}</p>
+        </div>
+    `;
+
 
         if (pacientes.length === 0) {
             patientListContainer.innerHTML = '<p>No hay pacientes registrados.</p>';
