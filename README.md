@@ -28,6 +28,7 @@ Este proyecto es una aplicación frontend desarrollada como parte de la evaluaci
 - Navega por la aplicación para gestionar pacientes, citas y profesionales.
 - Utiliza las funcionalidades disponibles según los requerimientos del proyecto.
 
+
 ## Autores
 
 - Claudio Pérez
