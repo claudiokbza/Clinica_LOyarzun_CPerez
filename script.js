@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let dvFinal = dvEsperado === 11 ? '0' : dvEsperado === 10 ? 'K' : dvEsperado.toString();
 
     return dv === dvFinal;
-}
+    }
 
     if (registrationForm) {
         registrationForm.addEventListener('submit', (e) => {
@@ -50,13 +50,19 @@ document.addEventListener('DOMContentLoaded', () => {
             document.querySelectorAll('.error-message').forEach(span => span.textContent = '');
 
             let valid = true;
-
+            
+            let firstInvalidField = null;
 
             const getInput = (id) => document.getElementById(id);
             const showError = (id, message) => {
-                const span = getInput(id).nextElementSibling;
+                const input = getInput(id);
+                const span = input.nextElementSibling;
                 span.textContent = message;
                 valid = false;
+
+                if (!firstInvalidField) {
+                    firstInvalidField = input;
+                }
             };
 
             // Campos básicos
@@ -77,8 +83,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     sintomas.add(checkbox.value);
                 }
             });
-            
+
+            // Otros síntomas
             const otrosSintomas = getInput('otrosSintomas').value;
+            const sintomasError = document.getElementById('sintomas-error');
 
             // Validaciones
             if (!nombre) showError('nombre', 'Campo obligatorio');
@@ -96,7 +104,28 @@ document.addEventListener('DOMContentLoaded', () => {
             if (isNaN(presionDiastolica) || presionDiastolica <= 0) showError('presionDiastolica', 'Debe ser un número positivo');
             if (isNaN(pulsaciones) || pulsaciones <= 0) showError('pulsaciones', 'Debe ser un número positivo');
             if (isNaN(oxigeno) || oxigeno <= 0) showError('oxigeno', 'Debe ser un número positivo');
-            if (sintomas.size === 0) showError('sintomas', 'Seleccione al menos un síntoma');
+            if (sintomas.size === 0) {
+                sintomasError.textContent = 'Debe seleccionar al menos un síntoma o ingresar uno en "Otros síntomas".';
+                valid = false;
+
+                if (!firstInvalidField) {
+                    document.getElementById('sintomas-error').scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            } else {
+                sintomasError.textContent = '';
+            }
+            
+            if (!valid && firstInvalidField) {
+                setTimeout(() => {
+                firstInvalidField.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                try {
+                    firstInvalidField.focus();
+                } catch (e) {}
+            }, 100);
+                return;
+            }
+
+            
             if (!valid) return;
 
 

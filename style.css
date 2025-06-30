@@ -256,3 +256,10 @@ input.error, select.error, textarea.error { border-color: var(--error-text); bac
     font-size: 0.95rem;
     color: var(--text-color);
 }
+
+.error-message {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 4px;
+    display: block;
+}
