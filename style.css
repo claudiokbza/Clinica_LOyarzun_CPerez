@@ -196,8 +196,8 @@ input.error, select.error, textarea.error { border-color: var(--error-text); bac
 }
 
 .attend-btn {
-    background-color: #007BFF;       /* Azul principal */
-    color: white;                    /* Texto blanco */
+    background-color: #007BFF;       
+    color: white;                    
     border: none;
     padding: 10px 16px;
     border-radius: 8px;
@@ -208,7 +208,7 @@ input.error, select.error, textarea.error { border-color: var(--error-text); bac
 }
 
 .attend-btn:hover {
-    background-color: #0056b3;       /* Azul más oscuro al pasar el mouse */
+    background-color: #0056b3;      
 }
 
 .attend-btn:active {
